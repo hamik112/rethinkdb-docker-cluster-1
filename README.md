@@ -1,4 +1,4 @@
-# bootstrap rethinkdb cluster
+# Bootstrap rethinkdb cluster
 
 nodes:
  - rdb1 (cluster node)
@@ -21,11 +21,13 @@ navigate to url http://127.0.0.1:28010/
 ```
 
 Use the bootstrap script to create a database with 2 shards and 1 replica per shard
+
 ```
 python -m pip install rethinkdb
 python bootstrap.py
 ```
 
-# Prerequisites
+## Prerequisites
+
 - docker version >=18.03
 - docker-compose >=1.21.0
