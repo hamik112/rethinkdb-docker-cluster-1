@@ -18,7 +18,8 @@ docker-compose up
 
 navigate to url http://127.0.0.1:28010/
 
-```
+
+# Create a database
 
 Use the bootstrap script to create a database with 2 shards and 1 replica per shard
 
