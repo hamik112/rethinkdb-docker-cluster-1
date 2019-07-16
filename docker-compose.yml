@@ -1,16 +1,9 @@
-version: '3'
 services:
   rdb1:
     hostname: "rdb1"
     image: rdb
     volumes:
       - "rdb1:/data1"
-    #ports:
-    #  - "28015:28015"
-    #  - "28010:28010"
-    #expose:
-    #  - "28015"
-    #  - "28010"
     entrypoint: su-exec daemon:daemon rethinkdb -n rdb1 -d /data --bind 0.0.0.0 --server-tag default --http-port 28010 --driver-port 28015
     networks:
       - rdbnet
@@ -20,12 +13,6 @@ services:
     image: rdb
     volumes:
       - "rdb2:/data2"
-    #ports:
-    #  - "28015:28015"
-    #  - "28010:28010"
-    #expose:
-    #  - "28015"
-    #  - "28010"
     depends_on:
       - "rdb1"
     entrypoint: su-exec daemon:daemon rethinkdb -n rdb2 -d /data --bind 0.0.0.0 --server-tag default --http-port 28010 --driver-port 28015 --join rdb1:29015
@@ -38,12 +25,6 @@ services:
     image: rdb
     volumes:
       - "rdb3:/rdb3"
-    #ports:
-    #  - "28015:28015"
-    #  - "28010:28010"
-    #expose:
-    #  - "28015"
-    #  - "28010"
     depends_on:
       - "rdb1"
     entrypoint: su-exec daemon:daemon rethinkdb -n rdb3 -d /data --bind 0.0.0.0 --server-tag default --http-port 28010 --driver-port 28015 --join rdb1:29015
